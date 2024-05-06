@@ -126,19 +126,6 @@ public class HeroEntity : MonoBehaviour
 
     public void JumpStart()
     {
-        if (!IsTouchingGround)
-        {
-            if (_isTouchingLeftWall)
-            {
-                _orientX = 1;
-                _wallJump();
-            }
-            else if (_isTouchingRightWall)
-            {
-                _orientX = -1;
-                _wallJump();
-            }
-        }
         _GetCurrentJumpSettings();
         _jumpState = JumpState.JumpImpulsion;
         _jumpTimer = 0f;
@@ -241,13 +228,7 @@ public class HeroEntity : MonoBehaviour
 
         if (isJumping)
         {
-            if ((_isTouchingLeftWall || _isTouchingRightWall) && _verticalSpeed < 0f)
-            {
-                _WallSlide(horizontalMovementSettings);
-            } else
-            {
                 _Updatejump();
-            }
         } else
         {
             if (!IsTouchingGround)
