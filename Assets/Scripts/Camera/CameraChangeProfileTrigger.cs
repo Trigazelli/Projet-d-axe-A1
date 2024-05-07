@@ -26,7 +26,7 @@ public class CameraChangeProfileTrigger : MonoBehaviour
         Gizmos.color = Color.white;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+/*    private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag(TARGET_TAG)) return;
         CameraManager.Instance.EnterProfile(_cameraProfile, _enterTransition);
@@ -36,5 +36,5 @@ public class CameraChangeProfileTrigger : MonoBehaviour
     {
         if (!other.CompareTag(TARGET_TAG)) return;
         CameraManager.Instance.ExitProfile(_cameraProfile, _exitTransition);
-    }
+    }*/
 }
