@@ -10,6 +10,7 @@ public class CameraChangeTrigger : MonoBehaviour
     {
         if (collision.CompareTag("CameraTriggerTarget"))
         {
+            Debug.Log("yippe kai hey");
             _event.Invoke();
         }
     }
