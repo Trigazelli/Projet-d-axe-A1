@@ -51,6 +51,9 @@ public class HeroEntity : MonoBehaviour
 
     private bool _isTouchingRightWall;
 
+    private int _touchedLayer;
+    public int touchedLayer {  get { return _touchedLayer; } set { _touchedLayer = value; } }
+
     [Header("Fall")]
     [SerializeField] private HeroFallSettings _fallSettings;
 
@@ -126,6 +129,23 @@ public class HeroEntity : MonoBehaviour
 
     public void JumpStart()
     {
+        if (!IsTouchingGround)
+        {
+            if (_isTouchingLeftWall)
+            {
+                if (touchedLayer != 3) return;
+                _orientX = 1;
+                _wallJump();
+                return;
+            }
+            else if (_isTouchingRightWall)
+            {
+                if (touchedLayer != 3) return;
+                _orientX = -1;
+                _wallJump();
+                return;
+            }
+        }
         _GetCurrentJumpSettings();
         _jumpState = JumpState.JumpImpulsion;
         _jumpTimer = 0f;
@@ -135,6 +155,7 @@ public class HeroEntity : MonoBehaviour
 
     public bool _CheckIfMaxJumpReached()
     {
+        if (_isTouchingLeftWall || _isTouchingRightWall) return false;
         return _jumpIndex >= _allJumpsSettings.Length;
     }
 
@@ -228,7 +249,14 @@ public class HeroEntity : MonoBehaviour
 
         if (isJumping)
         {
+            if ((_isTouchingLeftWall || _isTouchingRightWall) && _verticalSpeed < 0f && touchedLayer == 3)
+            {
+                _WallSlide(horizontalMovementSettings);
+            }
+            else
+            {
                 _Updatejump();
+            }
         } else
         {
             if (!IsTouchingGround)
@@ -373,6 +401,7 @@ public class HeroEntity : MonoBehaviour
     {
         _horizontalSpeed = 8f;
         _verticalSpeed = 8f;
+        _jumpState = JumpState.JumpImpulsion;
     }
 
     private void OnGUI()
