@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,6 +13,7 @@ public class HeroEntity : MonoBehaviour
     [SerializeField] private HeroHorizontalMovementSettings _airHorizontalMovementSettings;
     private float _horizontalSpeed = 0f;
     private float _moveDirX = 0f;
+    private float _moveDirY = 0f;
 
     [Header("Vertical Movements")]
     private float _verticalSpeed = 0f;
@@ -84,6 +86,9 @@ public class HeroEntity : MonoBehaviour
         get { return _orientX; }
     }
 
+    [Header("Main collider")]
+    [SerializeField] private CapsuleCollider2D _capsuleCollider;
+
     [Header("Debug")]
     [SerializeField] private bool _guiDebug = false;
 
@@ -104,6 +109,11 @@ public class HeroEntity : MonoBehaviour
     public void SetMoveDirX(float dirX)
     {
         _moveDirX = dirX;
+    }
+
+    public void SetMoveDirY(float dirY)
+    {
+        _moveDirY = dirY;
     }
 
     #endregion
@@ -359,6 +369,7 @@ public class HeroEntity : MonoBehaviour
     private void Update()
     {
         _UpdateOrientVisual();
+        Debug.Log(CheckElectricity());
     }
 
     private void _TurnBack(HeroHorizontalMovementSettings settings)
@@ -402,6 +413,11 @@ public class HeroEntity : MonoBehaviour
         _horizontalSpeed = 8f;
         _verticalSpeed = 8f;
         _jumpState = JumpState.JumpImpulsion;
+    }
+
+    private bool CheckElectricity()
+    {
+        return _capsuleCollider.gameObject.layer == 9;
     }
 
     private void OnGUI()

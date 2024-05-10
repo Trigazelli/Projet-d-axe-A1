@@ -31,6 +31,7 @@ public class HeroController : MonoBehaviour
         _UpdateJumpBuffer();
 
         _entity.SetMoveDirX(GetInputMoveX());
+        _entity.SetMoveDirY(GetInputMoveY());
 
         GetInputdash();
 
@@ -100,6 +101,22 @@ public class HeroController : MonoBehaviour
         }
 
         return inputMoveX;
+    }
+
+    private float GetInputMoveY()
+    {
+        float inputMoveY = 0f;
+        if (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.W))
+        {
+            inputMoveY = 1f;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            inputMoveY= -1f;
+        }
+
+        return inputMoveY;
     }
 
     private bool _GetInputDownJump()

@@ -9,10 +9,6 @@ public class CameraManager : MonoBehaviour
     // [SerializeField] private Camera _camera;
     [SerializeField] private _virtualCameras[] _allVirtualCameras;
     private CinemachineVirtualCamera _currentCamera;
-    [SerializeField] private GameObject _leftBoxCollider;
-    [SerializeField] private GameObject _rightBoxCollider;
-    [SerializeField] private GameObject _downBoxCollider;
-    [SerializeField] private GameObject _upBoxCollider;
     
     private CinemachineBrain _brain;
 
