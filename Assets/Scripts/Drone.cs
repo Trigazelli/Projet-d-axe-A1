@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Drone : MonoBehaviour
 {
+    [SerializeField] private HeroEntity _entity;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         RaycastHit2D hitresult = Physics2D.Raycast(
@@ -14,7 +15,7 @@ public class Drone : MonoBehaviour
 
         if (hitresult.collider != null)
         {
-
+            _entity.gameObject.layer = 10;
         }
     }
 }
