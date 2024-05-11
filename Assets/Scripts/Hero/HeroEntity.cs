@@ -26,6 +26,13 @@ public class HeroEntity : MonoBehaviour
     private HeroJumpSettings _currentJumpSettings;
     private int _jumpIndex = 0;
 
+    [Header("DroneJump")]
+    [SerializeField] private HeroJumpSettings _droneJumpsettings;
+    [SerializeField] private HeroFallSettings _droneFallSettings;
+    [SerializeField] private HeroHorizontalMovementSettings _droneHorizontalMovementSettings;
+
+    private bool _isDroning = false;
+
     // Camera Follow
     private CameraFollowable _cameraFollowable;
 
@@ -117,6 +124,14 @@ public class HeroEntity : MonoBehaviour
     }
 
     #endregion
+
+    public void Drone()
+    {
+        _isDroning = true;
+        Vector2 velocity = _rigidbody.velocity;
+        velocity.y = _droneJumpsettings.jumpSpeed;
+
+    }
 
     public void Dash()
     {
@@ -250,7 +265,7 @@ public class HeroEntity : MonoBehaviour
 
         if (_AreOrientAndMovementOpposite())
         {
-            _TurnBack(horizontalMovementSettings);
+            _TurnBack(horizontalMovementSettings); 
         } else
         {
             _UpdateHorizontalSpeed(horizontalMovementSettings);
