@@ -13,14 +13,12 @@ public class HeroEntity : MonoBehaviour
     [SerializeField] private HeroHorizontalMovementSettings _airHorizontalMovementSettings;
     private float _horizontalSpeed = 0f;
     private float _moveDirX = 0f;
-    private float _moveDirY = 0f;
 
     [Header("Vertical Movements")]
     private float _verticalSpeed = 0f;
 
     [Header("Jump")]
     [SerializeField] private HeroJumpSettings[] _allJumpsSettings;
-    [SerializeField] private HeroJumpSettings _wallJumpSettings;
     [SerializeField] private HeroFallSettings _jumpFallSettings;
     [SerializeField] private HeroHorizontalMovementSettings _jumpHorizontalMovementSettings;
     private HeroJumpSettings _currentJumpSettings;
@@ -39,6 +37,7 @@ public class HeroEntity : MonoBehaviour
     enum JumpState
     {
         Notjumping,
+        WallJumpImpulsion,
         JumpImpulsion,
         Falling,
     }
@@ -70,6 +69,9 @@ public class HeroEntity : MonoBehaviour
     // Je voulais mettre cette valeur dans HeroHorizontalMovementSettings,
     // mais elle ne sert que pour ce cas particulier, donc ça n'a pas beaucoup d'intérêt.
     [SerializeField] private float _maxWallSlideSpeed;
+    [SerializeField] private float _wallJumpDuration = 0.1f;
+    [SerializeField] private float _wallJumpHorizontalSpeed = 8f;
+    [SerializeField] private float _wallJumpVerticalSpeed = 8f;
 
     [Header("Dash")]
     [SerializeField] private HeroDashSettings _dashSettings;
@@ -83,7 +85,6 @@ public class HeroEntity : MonoBehaviour
     {
         get { return _isDashing; }
     }
-
 
     [Header("Orientation")]
     [SerializeField] private Transform _orientVisualRoot;
@@ -117,12 +118,6 @@ public class HeroEntity : MonoBehaviour
     {
         _moveDirX = dirX;
     }
-
-    public void SetMoveDirY(float dirY)
-    {
-        _moveDirY = dirY;
-    }
-
     #endregion
 
     public void Drone()
@@ -150,6 +145,8 @@ public class HeroEntity : MonoBehaviour
 
     public bool IsJumpImpulsing => _jumpState == JumpState.JumpImpulsion;
 
+    public bool IsWallJumping => _jumpState == JumpState.WallJumpImpulsion;
+
     public bool isJumpMinDurationReached => _jumpTimer >= _currentJumpSettings.jumpMinDuration;
 
     public void JumpStart()
@@ -158,14 +155,14 @@ public class HeroEntity : MonoBehaviour
         {
             if (_isTouchingLeftWall)
             {
-                if (touchedLayer != 3) return;
+                //if (touchedLayer != 3) return;
                 _orientX = 1;
                 _wallJump();
                 return;
             }
             else if (_isTouchingRightWall)
             {
-                if (touchedLayer != 3) return;
+                // if (touchedLayer != 3) return;
                 _orientX = -1;
                 _wallJump();
                 return;
@@ -180,8 +177,12 @@ public class HeroEntity : MonoBehaviour
 
     public bool _CheckIfMaxJumpReached()
     {
-        if (_isTouchingLeftWall || _isTouchingRightWall) return false;
         return _jumpIndex >= _allJumpsSettings.Length;
+    }
+
+    public bool IsTouchingWall()
+    {
+        return _isTouchingLeftWall || _isTouchingRightWall;
     }
 
     private void _UpdateJumpStateImpulsion(HeroJumpSettings settings)
@@ -221,6 +222,24 @@ public class HeroEntity : MonoBehaviour
             case JumpState.Falling:
                 _UpdateJumpStateFalling();
                 break;
+
+            case JumpState.WallJumpImpulsion:
+                _UpdateWallJump();
+                break;
+        }
+    }
+
+    private void _UpdateWallJump()
+    {
+        _jumpTimer += Time.fixedDeltaTime;
+        if (_jumpTimer < _wallJumpDuration)
+        {
+            _horizontalSpeed = _wallJumpHorizontalSpeed;
+            _verticalSpeed = _wallJumpVerticalSpeed;
+        }
+        else
+        {
+            _jumpState = JumpState.Falling;
         }
     }
 
@@ -274,7 +293,8 @@ public class HeroEntity : MonoBehaviour
 
         if (isJumping)
         {
-            if ((_isTouchingLeftWall || _isTouchingRightWall) && _verticalSpeed < 0f && touchedLayer == 3)
+
+            if ((_isTouchingLeftWall || _isTouchingRightWall) && _verticalSpeed < 0f)
             {
                 _WallSlide(horizontalMovementSettings);
             }
@@ -425,9 +445,10 @@ public class HeroEntity : MonoBehaviour
 
     private void _wallJump()
     {
-        _horizontalSpeed = 8f;
-        _verticalSpeed = 8f;
-        _jumpState = JumpState.JumpImpulsion;
+        _horizontalSpeed = _wallJumpHorizontalSpeed;
+        _verticalSpeed = _wallJumpVerticalSpeed;
+        _jumpTimer = 0f;
+        _jumpState = JumpState.WallJumpImpulsion;
     }
 
     private bool CheckElectricity()

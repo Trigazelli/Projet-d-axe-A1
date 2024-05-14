@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class HeroController : MonoBehaviour
@@ -48,7 +46,10 @@ public class HeroController : MonoBehaviour
             {
                 Debug.Log("ici");
                 _entity.JumpStart();
-            } else
+            } else if (!_entity.IsTouchingGround && _entity.IsTouchingWall())
+            {
+                _entity.JumpStart();
+            }
             {
                 _ResetJumpBuffer();
             }

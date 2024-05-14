@@ -8,7 +8,7 @@ public class ElectricityGiver : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
-            collision.gameObject.layer = 9;
+            collision.gameObject.layer = LayerMask.NameToLayer("Electric");
         }
     }
 }
