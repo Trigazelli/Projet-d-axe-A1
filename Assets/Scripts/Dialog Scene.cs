@@ -25,11 +25,10 @@ public class DialogScene : MonoBehaviour
     private void _toggleDialog()
     {
         Debug.Log("in toggle");
-        Debug.Log(Input.GetKeyDown(KeyCode.F));
+        Debug.Log("input" + Input.GetKeyDown(KeyCode.F));
         if (Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("input f");
-            StartCoroutine(_waitOut());
             _showDialog = !_showDialog;
             Debug.Log(_showDialog);
             if (_showDialog)
@@ -41,12 +40,13 @@ public class DialogScene : MonoBehaviour
             {
                 _canva.enabled = false;
             }
-    }
+            // StartCoroutine(_waitOut());
+        }
 
     }
 
-    private IEnumerator _waitOut()
+/*    private IEnumerator _waitOut()
     {
         yield return new WaitForSeconds(0.1f);
-    }
+    }*/
 }
