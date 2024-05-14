@@ -25,7 +25,6 @@ public class HeroController : MonoBehaviour
 
     private void Update()
     {
-
         _UpdateJumpBuffer();
 
         _entity.SetMoveDirX(GetInputMoveX());

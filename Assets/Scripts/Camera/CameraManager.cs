@@ -78,10 +78,10 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-    private void Update()
+/*    private void Update()
     {
         Debug.Log("Horizontal :" + _horizontal + ", Vertical :" + _vertical);
-    }
+    }*/
 
     private void GetArrayOfCamera()
     {
