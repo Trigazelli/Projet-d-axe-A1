@@ -55,6 +55,11 @@ public class HeroController : MonoBehaviour
             }
         }
 
+        if (_GetInputDroneJump())
+        {
+            _entity.DroneJumpStart();
+        }
+
         if (IsJumpBufferActive())
         {
             if ((_entity.IsTouchingGround || _IsCoyoteTimeActive()) && !_entity.isJumping)
@@ -111,6 +116,11 @@ public class HeroController : MonoBehaviour
     private bool _GetInputJump()
     {
         return Input.GetKey(KeyCode.Space);
+    }
+
+    private bool _GetInputDroneJump()
+    {
+        return Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.W);
     }
 
     private void _ResetJumpBuffer()

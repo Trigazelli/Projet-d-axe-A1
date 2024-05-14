@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 3477639040912545515}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -961,16 +961,6 @@ MonoBehaviour:
   - jumpSpeed: 8
     jumpMinDuration: 0.1
     jumpMaxDuration: 0.25
-  - jumpSpeed: 6
-    jumpMinDuration: 0.1
-    jumpMaxDuration: 0.25
-  - jumpSpeed: 6
-    jumpMinDuration: 0.05
-    jumpMaxDuration: 0.1
-  _wallJumpSettings:
-    jumpSpeed: 8
-    jumpMinDuration: 1
-    jumpMaxDuration: 1
   _jumpFallSettings:
     fallGravity: 60
     fallSpeedMax: 20
@@ -979,6 +969,18 @@ MonoBehaviour:
     deceleration: 1
     turnBackFrictions: 200
     speedMax: 7
+  _droneJumpsettings:
+    jumpSpeed: 20
+    jumpMinDuration: 0.05
+    jumpMaxDuration: 2
+  _droneFallSettings:
+    fallGravity: 20
+    fallSpeedMax: 10
+  _droneHorizontalMovementSettings:
+    acceleration: 20
+    deceleration: 15
+    turnBackFrictions: 25
+    speedMax: 5
   _groundDetector: {fileID: 8642091537676405586}
   _leftWallDetector: {fileID: 3812735141994703053}
   _rightWallDetector: {fileID: 2401256057739644362}
@@ -986,11 +988,15 @@ MonoBehaviour:
     fallGravity: 20
     fallSpeedMax: 10
   _maxWallSlideSpeed: -3
+  _wallJumpDuration: 0.1
+  _wallJumpHorizontalSpeed: 8
+  _wallJumpVerticalSpeed: 8
   _dashSettings:
     speed: 40
     duration: 0.1
     cooldown: 1
   _orientVisualRoot: {fileID: 3024582456938629764}
+  _capsuleCollider: {fileID: 3477639040912545515}
   _guiDebug: 1
 --- !u!114 &8642091537676405586
 MonoBehaviour:
@@ -1011,7 +1017,7 @@ MonoBehaviour:
   _detectionLength: 0.05
   _groundLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
 --- !u!114 &3812735141994703053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,6 +1030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574bac3541abbc148a143cbafbe1001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entity: {fileID: 6480041685457909243}
   _detectionspoints:
   - {fileID: 1672047152519347277}
   - {fileID: 7049980831248737365}
@@ -1031,7 +1038,7 @@ MonoBehaviour:
   _detectionLength: 0.1
   _wallLayerMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 392
 --- !u!114 &2401256057739644362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,6 +1051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac6e9b2fc848f64e9e8c77fc04ca492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _entity: {fileID: 6480041685457909243}
   _detectionspoints:
   - {fileID: 2005123458735316131}
   - {fileID: 4517384612580243375}
@@ -1051,7 +1059,7 @@ MonoBehaviour:
   _detectionLength: 0.1
   _rightLayerMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 392
 --- !u!114 &7553179741662071846
 MonoBehaviour:
   m_ObjectHideFlags: 0

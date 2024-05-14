@@ -37,6 +37,7 @@ public class HeroEntity : MonoBehaviour
     enum JumpState
     {
         Notjumping,
+        DroneJumpImpulsion,
         WallJumpImpulsion,
         JumpImpulsion,
         Falling,
@@ -173,6 +174,13 @@ public class HeroEntity : MonoBehaviour
         _jumpTimer = 0f;
     }
 
+    public void DroneJumpStart()
+    {
+        _jumpState = JumpState.DroneJumpImpulsion;
+        _verticalSpeed = _droneJumpsettings.jumpSpeed;
+        _jumpTimer = 0;
+    }
+
     public bool isJumping => _jumpState != JumpState.Notjumping;
 
     public bool _CheckIfMaxJumpReached()
@@ -226,6 +234,23 @@ public class HeroEntity : MonoBehaviour
             case JumpState.WallJumpImpulsion:
                 _UpdateWallJump();
                 break;
+
+            case JumpState.DroneJumpImpulsion:
+                _UpdateDroneJump();
+                break;
+        }
+    }
+
+    private void _UpdateDroneJump()
+    {
+        _jumpTimer += Time.fixedDeltaTime;
+        if (_jumpTimer < _droneJumpsettings.jumpMaxDuration)
+        {
+            _verticalSpeed = _droneJumpsettings.jumpSpeed;
+            
+        } else
+        {
+            _jumpState = JumpState.Falling;
         }
     }
 
@@ -240,6 +265,7 @@ public class HeroEntity : MonoBehaviour
         else
         {
             _jumpState = JumpState.Falling;
+            
         }
     }
 
@@ -420,6 +446,10 @@ public class HeroEntity : MonoBehaviour
     private HeroHorizontalMovementSettings _GetCurrentHorizontalMovementSettings()
     {
         return IsTouchingGround ? _groundHorizontalMovementSettings : _airHorizontalMovementSettings;
+/*        if (IsTouchingGround)
+        {
+            return _groundHorizontalMovementSettings;
+        } else if (JumpState)*/
     }
 
     private void _UpdateOrientVisual()
