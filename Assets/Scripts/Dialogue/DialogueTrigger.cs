@@ -7,6 +7,7 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue dialogue;
 
     private bool _dialogueHasStarted = false;
+    private bool _keyDown = false;
 
     public void TriggerDialogue()
     {
@@ -15,24 +16,34 @@ public class DialogueTrigger : MonoBehaviour
         _dialogueHasStarted = true;
     }
 
+    private void Update()
+    {
+        _keyDown = Input.GetKeyDown(KeyCode.F);
+        Debug.Log("keydown" + _keyDown);
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!collision.gameObject.transform.CompareTag("CameraTriggerTarget")) return;
-        Debug.Log("in trigger 2d");
-        if (Input.GetKeyDown(KeyCode.F))
+        Debug.Log(collision.gameObject.transform.tag);
+        if (collision.gameObject.transform.CompareTag("CameraTriggerTarget"))
         {
-            if (!_dialogueHasStarted)
+            Debug.Log("in trigger 2d");
+            if (_keyDown)
             {
-                TriggerDialogue();
-                _dialogueHasStarted = true;
-            } else
-            {
-                if (!DialogueManager.Instance.DisplayNextSentence())
+                if (!_dialogueHasStarted)
                 {
-                    _dialogueHasStarted = false;
+                    TriggerDialogue();
                 }
+                else
+                {
+                    if (!DialogueManager.Instance.DisplayNextSentence())
+                    {
+                        _dialogueHasStarted = false;
+                    }
+                }
+                Debug.Log("in input F");
             }
-            Debug.Log("in input F");
         }
+        
     }
 }

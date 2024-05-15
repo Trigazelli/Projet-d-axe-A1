@@ -121,17 +121,9 @@ public class HeroEntity : MonoBehaviour
     }
     #endregion
 
-    public void Drone()
-    {
-        _isDroning = true;
-        Vector2 velocity = _rigidbody.velocity;
-        velocity.y = _droneJumpsettings.jumpSpeed;
-
-    }
-
     public void Dash()
     {
-        Debug.Log(_jumpState);
+        // Debug.Log(_jumpState);
         _isDashing = true;
         Vector2 velocity = _rigidbody.velocity;
         velocity.x = _dashSettings.speed * _orientX;
@@ -430,7 +422,6 @@ public class HeroEntity : MonoBehaviour
     private void Update()
     {
         _UpdateOrientVisual();
-        Debug.Log(CheckElectricity());
     }
 
     private void _TurnBack(HeroHorizontalMovementSettings settings)
@@ -479,11 +470,6 @@ public class HeroEntity : MonoBehaviour
         _verticalSpeed = _wallJumpVerticalSpeed;
         _jumpTimer = 0f;
         _jumpState = JumpState.WallJumpImpulsion;
-    }
-
-    private bool CheckElectricity()
-    {
-        return _capsuleCollider.gameObject.layer == 9;
     }
 
     private void OnGUI()

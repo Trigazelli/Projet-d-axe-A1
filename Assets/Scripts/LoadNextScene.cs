@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LoadNextScene : MonoBehaviour
 {
-    private void OnMouseDown()
+    [SerializeField] private string _sceneName;
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (collision.gameObject.transform.CompareTag("CameraTriggerTarget"))
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                SceneManager.LoadScene(_sceneName);
+            }
+        }
     }
 }
