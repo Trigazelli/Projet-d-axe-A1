@@ -16,7 +16,6 @@ public class DialogueTrigger : MonoBehaviour
     {
         Debug.Log("in trigger dialogue");
         DialogueManager.Instance.StartDialogue(dialogue);
-        DialogueManager.Instance.DisplayNextSentence();
         _dialogueHasStarted = true;
     }
 
