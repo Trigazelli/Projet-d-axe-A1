@@ -821,7 +821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &513389684
 Transform:
   m_ObjectHideFlags: 0
@@ -2729,7 +2729,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TriggerDialogue
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3537241828661193525, guid: 2b573e4a888d81d4d9192d9e9036bb8e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8225201631552183295, guid: 2b573e4a888d81d4d9192d9e9036bb8e, type: 3}
