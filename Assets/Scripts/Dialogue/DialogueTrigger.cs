@@ -10,7 +10,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
 
     private bool _dialogueHasStarted = false;
-    private bool _keyDown = false;
+    private bool _isInTrigger = false;
 
     public void TriggerDialogue()
     {
@@ -21,42 +21,30 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        // supprimer si ça n'apparait que là
-        _keyDown = Input.GetKeyDown(KeyCode.F);
-        Debug.Log("keydown" + _keyDown);
-
-/*        foreach (Transform detectionPoint in _detectionPoints)
+        Debug.Log("in trigger 2d");
+        if (!_isInTrigger) return;
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            RaycastHit2D hit2D = Physics2D.Raycast(
-            transform.position,
-            Vector3.forward,
-            Mathf.Infinity,
-            _layerMask);
-            Debug.Log(hit2D.collider);
-            if (hit2D.collider != null)
+            if (!_dialogueHasStarted)
             {
-                if (_keyDown)
+                Debug.Log("StartDialogue");
+                TriggerDialogue();
+            }
+            else
+            {
+                if (!DialogueManager.Instance.DisplayNextSentence())
                 {
-                    if (!_dialogueHasStarted)
-                    {
-                        TriggerDialogue();
-                        _dialogueHasStarted = true;
-                    }
-                    else
-                    {
-                        if (!DialogueManager.Instance.DisplayNextSentence())
-                        {
-                            _dialogueHasStarted = false;
-                        }
-                    }
+                    _dialogueHasStarted = false;
                 }
             }
-        }*/
+            Debug.Log("in input F");
+        }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.transform.tag);
+        _isInTrigger = true;
+/*        Debug.Log(collision.gameObject.transform.tag);
         if (collision.gameObject.transform.CompareTag("CameraTriggerTarget"))
         {
             Debug.Log("in trigger 2d");
@@ -76,7 +64,11 @@ public class DialogueTrigger : MonoBehaviour
                 }
                 Debug.Log("in input F");
             }
-        }
+        }*/
+    }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        _isInTrigger = false;
     }
 }
