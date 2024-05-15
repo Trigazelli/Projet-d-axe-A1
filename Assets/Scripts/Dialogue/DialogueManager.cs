@@ -36,7 +36,6 @@ public class DialogueManager : MonoBehaviour
             _sentences.Enqueue(sentence);
         }
         _canvas.enabled = true;
-        DisplayNextSentence();
     }
 
     public bool DisplayNextSentence()

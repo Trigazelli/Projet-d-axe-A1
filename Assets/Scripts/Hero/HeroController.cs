@@ -27,7 +27,7 @@ public class HeroController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Escape" + Input.GetKeyDown(KeyCode.Escape));
+        //Debug.Log("Escape" + Input.GetKeyDown(KeyCode.Escape));
 
         _UpdateJumpBuffer();
 
