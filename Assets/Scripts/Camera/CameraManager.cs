@@ -6,14 +6,15 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    [SerializeField] private int _vertical;
+    [SerializeField] private int _horizontal;
+
     // [SerializeField] private Camera _camera;
     [SerializeField] private _virtualCameras[] _allVirtualCameras;
     private CinemachineVirtualCamera _currentCamera;
     
     private CinemachineBrain _brain;
 
-    private int _vertical;
-    private int _horizontal;
 
     _virtualCameras _currentstruct;
 
@@ -58,11 +59,11 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
+        _horizontal -= 1;
+        _vertical -= 1;
         _brain = GetComponent<CinemachineBrain>();
-        _vertical = 0;
-        _horizontal = 0;
         _SwitchToCamera();
-        _currentstruct = _allVirtualCameras[0];
+        _currentstruct = _allVirtualCameras[_horizontal];
     }
 
     private void _SwitchToCamera()
