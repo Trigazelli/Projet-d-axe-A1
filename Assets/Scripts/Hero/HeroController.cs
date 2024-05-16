@@ -18,8 +18,6 @@ public class HeroController : MonoBehaviour
     [SerializeField] private float _coyoteTimeDuration = 0.1f;
     private float _coyoteTimeCountDown = -1f;
 
-    private bool _canDrone = false;
-
     private void Start()
     {
         _CancelJumpBuffer();
@@ -123,7 +121,6 @@ public class HeroController : MonoBehaviour
 
     private bool _GetInputDroneJump()
     {
-        if (!_canDrone) return false;
         return Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.W);
     }
 

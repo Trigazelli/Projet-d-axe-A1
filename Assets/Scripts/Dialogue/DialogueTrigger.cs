@@ -6,8 +6,8 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
 
-    [SerializeField] private Transform[] _detectionPoints;
-    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private bool _giveDrone;
+    [SerializeField] private HeroEntity _entity;
 
     private bool _dialogueHasStarted = false;
     private bool _isInTrigger = false;
@@ -21,7 +21,6 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("in trigger 2d");
         if (!_isInTrigger) return;
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -35,6 +34,11 @@ public class DialogueTrigger : MonoBehaviour
                 if (!DialogueManager.Instance.DisplayNextSentence())
                 {
                     _dialogueHasStarted = false;
+                    if (_giveDrone)
+                    {
+                        _entity.CanDrone = true;
+                        PlayerPrefs.SetInt("canDrone", 1);
+                    }
                 }
             }
             Debug.Log("in input F");

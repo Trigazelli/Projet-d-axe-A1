@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneTest.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/couloir 1.unity
+    guid: cc5acb501d3020c44ae60f6a79e28988
   m_configObjects: {}

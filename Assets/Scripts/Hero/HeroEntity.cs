@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -29,7 +30,8 @@ public class HeroEntity : MonoBehaviour
     [SerializeField] private HeroFallSettings _droneFallSettings;
     [SerializeField] private HeroHorizontalMovementSettings _droneHorizontalMovementSettings;
 
-    private bool _isDroning = false;
+    private bool _canDrone = false;
+    public bool CanDrone { get { return _canDrone; } set { _canDrone = value; } }
 
     // Camera Follow
     private CameraFollowable _cameraFollowable;
@@ -103,6 +105,7 @@ public class HeroEntity : MonoBehaviour
 
     private void Awake()
     {
+        _setDrone();
         _cameraFollowable = GetComponent<CameraFollowable>();
         _cameraFollowable.FollowPositionX = _rigidbody.position.x;
         _cameraFollowable.FollowPositionY = _rigidbody.position.y;
@@ -168,6 +171,8 @@ public class HeroEntity : MonoBehaviour
 
     public void DroneJumpStart()
     {
+        Debug.Log("can Drone" + _canDrone);
+        if (!_canDrone) return;
         _jumpState = JumpState.DroneJumpImpulsion;
         _verticalSpeed = _droneJumpsettings.jumpSpeed;
         _jumpTimer = 0;
@@ -279,7 +284,7 @@ public class HeroEntity : MonoBehaviour
 
         if (_isDashing)
         {
-            if (_dashTime > _dashSettings.duration || _isTouchingLeftWall || _isTouchingRightWall)
+            if (_dashTime > _dashSettings.duration || IsTouchingWall())
             {
                 _isDashing = false;
                 _dashTime = 0f;
@@ -312,7 +317,7 @@ public class HeroEntity : MonoBehaviour
         if (isJumping)
         {
 
-            if ((_isTouchingLeftWall || _isTouchingRightWall) && _verticalSpeed < 0f)
+            if (IsTouchingWall() && _verticalSpeed < 0f && _isTouchingCurtain())
             {
                 _WallSlide(horizontalMovementSettings);
             }
@@ -345,6 +350,11 @@ public class HeroEntity : MonoBehaviour
     private bool _AreOrientAndMovementOpposite()
     {
         return _moveDirX * _orientX < 0f;
+    }
+
+    private bool _isTouchingCurtain()
+    {
+        return _touchedLayer == LayerMask.NameToLayer("Rideau");
     }
 
     private void _ApplyHorizontalSpeed()
@@ -466,10 +476,20 @@ public class HeroEntity : MonoBehaviour
 
     private void _wallJump()
     {
+
+        if (!_isTouchingCurtain()) return; 
         _horizontalSpeed = _wallJumpHorizontalSpeed;
         _verticalSpeed = _wallJumpVerticalSpeed;
         _jumpTimer = 0f;
         _jumpState = JumpState.WallJumpImpulsion;
+    }
+
+    private void _setDrone()
+    {
+        if (PlayerPrefs.GetInt("canDrone") == 1)
+        {
+            CanDrone = true;
+        }
     }
 
     private void OnGUI()
