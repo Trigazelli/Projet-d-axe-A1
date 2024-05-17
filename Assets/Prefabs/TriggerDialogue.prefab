@@ -184,3 +184,5 @@ MonoBehaviour:
     - 7
     - 8
     - 9
+  _giveDrone: 0
+  _entity: {fileID: 0}

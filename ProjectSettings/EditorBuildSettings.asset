@@ -6,9 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Chambre.unity
+    guid: 9e986905a0b850c47a5b06bbc45f4aab
+  - enabled: 1
     path: Assets/Scenes/SceneTest.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Couloir 2.unity
+    guid: ddf14caea7dfad74c835287db799fedb
+  - enabled: 1
+    path: Assets/Scenes/Salon 1.unity
+    guid: 9a04f21f6c8d658438a360bc819bc0ff
+  - enabled: 1
+    path: Assets/Scenes/Salon 2.unity
+    guid: 9537b21d9facc784593300aac364caea
+  - enabled: 1
+    path: Assets/Scenes/Cuisine.unity
+    guid: d3a7d8feb5b755046b7bc8b355006466
+  - enabled: 1
     path: Assets/Scenes/Couloir 1.unity
     guid: cc5acb501d3020c44ae60f6a79e28988
+  - enabled: 1
+    path: Assets/Scenes/Salle de bain.unity
+    guid: 4249c4af472d65a41bad433d902b36b6
   m_configObjects: {}
