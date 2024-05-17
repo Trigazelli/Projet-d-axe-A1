@@ -78,6 +78,10 @@ public class HeroEntity : MonoBehaviour
 
     [Header("Dash")]
     [SerializeField] private HeroDashSettings _dashSettings;
+
+    private bool _canDash = false;
+    public bool CanDash { get { return _canDash; } set {_canDash = value; } }
+
     public HeroDashSettings DashSettings
     {
         get { return _dashSettings; }
@@ -103,9 +107,11 @@ public class HeroEntity : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private bool _guiDebug = false;
 
+    private bool _isStopped = false;
+
     private void Awake()
     {
-        _setDrone();
+        _setDroneAndDash();
         _cameraFollowable = GetComponent<CameraFollowable>();
         _cameraFollowable.FollowPositionX = _rigidbody.position.x;
         _cameraFollowable.FollowPositionY = _rigidbody.position.y;
@@ -126,6 +132,7 @@ public class HeroEntity : MonoBehaviour
 
     public void Dash()
     {
+        if (!_canDash) return;
         // Debug.Log(_jumpState);
         _isDashing = true;
         Vector2 velocity = _rigidbody.velocity;
@@ -176,6 +183,11 @@ public class HeroEntity : MonoBehaviour
         _jumpState = JumpState.DroneJumpImpulsion;
         _verticalSpeed = _droneJumpsettings.jumpSpeed;
         _jumpTimer = 0;
+    }
+
+    public void StopMovement()
+    {
+        _isStopped = true;
     }
 
     public bool isJumping => _jumpState != JumpState.Notjumping;
@@ -275,6 +287,13 @@ public class HeroEntity : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_isStopped)
+        {
+            _rigidbody.velocity = Vector3.zero;
+            _isStopped = false;
+            return;
+        }
+
         _ApplyLeftWallDetection();
         _ApplyRightWallDetection();
         _ApplyGroundDetection();
@@ -484,11 +503,15 @@ public class HeroEntity : MonoBehaviour
         _jumpState = JumpState.WallJumpImpulsion;
     }
 
-    private void _setDrone()
+    private void _setDroneAndDash()
     {
         if (PlayerPrefs.GetInt("canDrone") == 1)
         {
-            CanDrone = true;
+            _canDrone = true;
+        }
+        if (PlayerPrefs.GetInt("canDash") == 1)
+        {
+            _canDash = true;
         }
     }
 

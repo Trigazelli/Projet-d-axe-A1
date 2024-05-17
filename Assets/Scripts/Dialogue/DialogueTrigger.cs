@@ -6,7 +6,7 @@ public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
 
-    [SerializeField] private bool _giveDrone;
+    [SerializeField] private Offer _offer;
     [SerializeField] private HeroEntity _entity;
 
     private bool _dialogueHasStarted = false;
@@ -34,15 +34,31 @@ public class DialogueTrigger : MonoBehaviour
                 if (!DialogueManager.Instance.DisplayNextSentence())
                 {
                     _dialogueHasStarted = false;
-                    if (_giveDrone)
-                    {
-                        _entity.CanDrone = true;
-                        PlayerPrefs.SetInt("canDrone", 1);
-                    }
+                    OfferPowerUp();
                 }
             }
             Debug.Log("in input F");
         }
+    }
+
+    private void OfferPowerUp()
+    {
+        switch (_offer)
+        {
+            case Offer.Nothing:
+                return;
+
+            case Offer.Drone:
+                _entity.CanDrone = true;
+                PlayerPrefs.SetInt("canDrone", 1);
+                break;
+
+            case Offer.Dash:
+                _entity.CanDash = true;
+                PlayerPrefs.SetInt("canDash", 1);
+                break;
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,4 +91,11 @@ public class DialogueTrigger : MonoBehaviour
     {
         _isInTrigger = false;
     }
+}
+
+enum Offer
+{
+    Nothing,
+    Drone,
+    Dash
 }

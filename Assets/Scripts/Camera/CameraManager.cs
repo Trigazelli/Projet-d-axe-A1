@@ -14,6 +14,8 @@ public class CameraManager : MonoBehaviour
     private CinemachineVirtualCamera _currentCamera;
     
     private CinemachineBrain _brain;
+    private HeroController _controller;
+    private HeroEntity _entity;
 
 
     _virtualCameras _currentstruct;
@@ -22,6 +24,18 @@ public class CameraManager : MonoBehaviour
     struct _virtualCameras
     {
         [SerializeField] public CinemachineVirtualCamera[] virtualCamera;
+    }
+
+    private void Awake()
+    {
+        _brain = GetComponent<CinemachineBrain>();
+        _controller = FindObjectOfType<HeroController>();
+        _entity = FindObjectOfType<HeroEntity>();
+
+        _horizontal -= 1;
+        _vertical -= 1;
+        _SwitchToCamera();
+        _currentstruct = _allVirtualCameras[_horizontal];
     }
 
     public void SwitchCameraLeft()
@@ -57,15 +71,6 @@ public class CameraManager : MonoBehaviour
         _SwitchToCamera();
     }
 
-    private void Awake()
-    {
-        _horizontal -= 1;
-        _vertical -= 1;
-        _brain = GetComponent<CinemachineBrain>();
-        _SwitchToCamera();
-        _currentstruct = _allVirtualCameras[_horizontal];
-    }
-
     private void _SwitchToCamera()
     {
         _currentCamera = _allVirtualCameras[_vertical].virtualCamera[_horizontal];
@@ -79,10 +84,10 @@ public class CameraManager : MonoBehaviour
         }
     }
 
-/*    private void Update()
+    private void Update()
     {
-        Debug.Log("Horizontal :" + _horizontal + ", Vertical :" + _vertical);
-    }*/
+        _StopMovementIfBlending();
+    }
 
     private void GetArrayOfCamera()
     {
@@ -97,5 +102,16 @@ public class CameraManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void _StopMovementIfBlending()
+    {
+        if (_brain.IsBlending)
+        {
+            _controller.enabled = false;
+            _entity.StopMovement();
+            return;
+        }
+        _controller.enabled = true;
     }
 }

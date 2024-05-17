@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8225201631552183295}
   - component: {fileID: 7088011453217467930}
   - component: {fileID: 4386124441002880759}
-  - component: {fileID: 3537241828661193525}
   - component: {fileID: 8336199887126199350}
   m_Layer: 0
   m_Name: TriggerDialogue
@@ -132,33 +131,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &3537241828661193525
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9070863525065356401}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: ce7395abc34ba5d4795af6ecebfb759b, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &8336199887126199350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,9 +146,9 @@ MonoBehaviour:
   dialogue:
     name: Bob
     sentences:
-    - chipi chipi
-    - chapa chapa
-    - chopo chopo
+    - 0
+    - 1
+    - 2
     - 3
     - "4\t"
     - 5
@@ -184,5 +156,5 @@ MonoBehaviour:
     - 7
     - 8
     - 9
-  _giveDrone: 0
+  _offer: 1
   _entity: {fileID: 0}
