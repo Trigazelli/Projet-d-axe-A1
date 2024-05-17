@@ -24,9 +24,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Cuisine.unity
     guid: d3a7d8feb5b755046b7bc8b355006466
   - enabled: 1
-    path: Assets/Scenes/Couloir 1.unity
+    path: Assets/Scenes/couloir 1.unity
     guid: cc5acb501d3020c44ae60f6a79e28988
   - enabled: 1
     path: Assets/Scenes/Salle de bain.unity
     guid: 4249c4af472d65a41bad433d902b36b6
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: ac2f29f7645784b48aabe9ecad6f4507
   m_configObjects: {}

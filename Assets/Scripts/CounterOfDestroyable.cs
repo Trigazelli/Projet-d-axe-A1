@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CounterOfDestroyable : MonoBehaviour
 {
     [SerializeField] private int _numberOfObjects;
-    [SerializeField] private Sprite[] _dozensNumber;
-    [SerializeField] private Sprite[] _unitsNumber;
     [SerializeField] private Text _counter;
 
     private static CounterOfDestroyable _instance;
@@ -27,13 +26,17 @@ public class CounterOfDestroyable : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         Debug.Log(_numberOfObjects);
+        DisplayCounter();
     }
 
     public void DecrementCounter()
     {
         _numberOfObjects--;
         Debug.Log(_numberOfObjects);
-        // DisplayCounter();
+        DisplayCounter();
+        if (_numberOfObjects == 0) {
+            SceneManager.LoadScene("Victory");
+        }
     }
 
     private void DisplayCounter()
