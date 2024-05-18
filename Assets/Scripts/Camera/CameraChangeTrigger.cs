@@ -38,7 +38,7 @@ public class CameraChangeTrigger : MonoBehaviour
         {
             StopAllCoroutines();
         }
-        Debug.Log("is Trigger" + _boxCollider.isTrigger);
+        // Debug.Log("is Trigger" + _boxCollider.isTrigger);
     }
 
     private IEnumerator WaitAndTrigger()

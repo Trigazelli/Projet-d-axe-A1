@@ -14,9 +14,10 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> _sentences;
 
+
     private void Awake()
     {
-        _instance = this;
+        if (_instance == null) _instance = this;
     }
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        ControllerDisabler.Instance.InDialogue = true;
         _nameText.text = dialogue.name;
         _sentences.Clear();
 
@@ -56,5 +58,6 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("End of dialogue");
         _canvas.enabled = false;
+        ControllerDisabler.Instance.InDialogue = false;
     }
 }

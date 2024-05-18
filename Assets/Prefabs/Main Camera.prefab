@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _vertical: 1
-  _horizontal: 2
+  _horizontal: 1
   _allVirtualCameras:
   - virtualCamera:
     - {fileID: 0}

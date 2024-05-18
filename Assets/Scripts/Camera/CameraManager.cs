@@ -86,6 +86,8 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(ControllerDisabler.Instance);
+        ControllerDisabler.Instance.InBlending = _brain.IsBlending;
         _StopMovementIfBlending();
     }
 
@@ -106,12 +108,6 @@ public class CameraManager : MonoBehaviour
 
     private void _StopMovementIfBlending()
     {
-        if (_brain.IsBlending)
-        {
-            _controller.enabled = false;
-            _entity.StopMovement();
-            return;
-        }
-        _controller.enabled = true;
+        if (_brain.IsBlending) _entity.StopMovement();
     }
 }
