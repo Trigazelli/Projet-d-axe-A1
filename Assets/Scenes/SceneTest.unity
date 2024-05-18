@@ -2359,14 +2359,6 @@ PrefabInstance:
       value: Main Camera
       objectReference: {fileID: 0}
     - target: {fileID: 5548857233573621416, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
-      propertyPath: _vertical
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5548857233573621416, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
-      propertyPath: _horizontal
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5548857233573621416, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
       propertyPath: _allVirtualCameras.Array.data[0].virtualCamera.Array.data[0]
       value: 
       objectReference: {fileID: 343291758}
