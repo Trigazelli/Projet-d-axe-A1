@@ -1013,7 +1013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 182482925853841835, guid: 5c86e74169ec088488685203b29560dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 182482925853841835, guid: 5c86e74169ec088488685203b29560dc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1044,8 +1044,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6480041685457909243, guid: 5c86e74169ec088488685203b29560dc, type: 3}
-      propertyPath: _groundHorizontalMovementSettings.deceleration
-      value: 25
+      propertyPath: _wallJumpVerticalSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480041685457909243, guid: 5c86e74169ec088488685203b29560dc, type: 3}
+      propertyPath: _wallJumpHorizontalSpeed
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6771865885331362632, guid: 5c86e74169ec088488685203b29560dc, type: 3}
       propertyPath: m_Name
@@ -4487,11 +4491,11 @@ MonoBehaviour:
   dialogue:
     name: Homeboy
     sentences:
-    - "Eh\xE8h que-est-ce qu'on a l\xE0?\n...\n..."
+    - "...\n...\nEh\xE8h que-est-ce qu'on a l\xE0?"
     - "Chalut, moi c'est Homeboy! L'assistant \xE0 tout faire de cette maison."
     - "Eh\xE8\xE8h\xE8\xE8\xE8h...\nTu veux me rendre un service avec ZQSD et ta
       patoune F?"
-    - "Parce l\xE0 je m'ennuie de fou..."
+    - "Parce que l\xE0 je m'ennuie de fou..."
   _offer: 0
   _entity: {fileID: 0}
 --- !u!61 &5678373779457875963

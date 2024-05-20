@@ -33,10 +33,11 @@ public class CameraChangeTrigger : MonoBehaviour
     {
         if (!_brain.IsBlending)
         {
-            StartCoroutine(WaitAndTrigger());
+            //StartCoroutine(WaitAndTrigger());
         } else
         {
-            StopAllCoroutines();
+            //StopAllCoroutines();
+            _boxCollider.isTrigger = true;
         }
         // Debug.Log("is Trigger" + _boxCollider.isTrigger);
     }
