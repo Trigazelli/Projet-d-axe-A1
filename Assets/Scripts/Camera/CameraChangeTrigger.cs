@@ -43,7 +43,7 @@ public class CameraChangeTrigger : MonoBehaviour
 
     private IEnumerator WaitAndTrigger()
     {
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.2f);
         _boxCollider.isTrigger = true;
     }
 }

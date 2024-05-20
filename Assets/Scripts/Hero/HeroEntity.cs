@@ -183,7 +183,7 @@ public class HeroEntity : MonoBehaviour
         _jumpState = JumpState.DroneJumpImpulsion;
         _verticalSpeed = _droneJumpsettings.jumpSpeed;
         _jumpTimer = 0;
-    }
+    }   
 
     public bool isJumping => _jumpState != JumpState.Notjumping;
 

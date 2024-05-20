@@ -85,7 +85,7 @@ public class CameraManager : MonoBehaviour
     private void Update()
     {
         Debug.Log(ControllerDisabler.Instance);
-        ControllerDisabler.Instance.InBlending = _brain.IsBlending;
+        // ControllerDisabler.Instance.InBlending = _brain.IsBlending;
     }
 
     private void GetArrayOfCamera()
