@@ -797,7 +797,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0073571205, y: 0.9931419}
+  m_Size: {x: 0.01, y: 0.01}
   m_EdgeRadius: 0
 --- !u!1 &5992649133824918739
 GameObject:
@@ -949,7 +949,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 7212136366118121974}
   _groundHorizontalMovementSettings:
     acceleration: 20
-    deceleration: 15
+    deceleration: 25
     turnBackFrictions: 25
     speedMax: 5
   _airHorizontalMovementSettings:
@@ -970,9 +970,9 @@ MonoBehaviour:
     turnBackFrictions: 200
     speedMax: 7
   _droneJumpsettings:
-    jumpSpeed: 20
+    jumpSpeed: 5
     jumpMinDuration: 0.05
-    jumpMaxDuration: 2
+    jumpMaxDuration: 1
   _droneFallSettings:
     fallGravity: 20
     fallSpeedMax: 10

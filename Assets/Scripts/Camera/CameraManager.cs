@@ -15,7 +15,6 @@ public class CameraManager : MonoBehaviour
     
     private CinemachineBrain _brain;
     private HeroController _controller;
-    private HeroEntity _entity;
 
 
     _virtualCameras _currentstruct;
@@ -30,7 +29,6 @@ public class CameraManager : MonoBehaviour
     {
         _brain = GetComponent<CinemachineBrain>();
         _controller = FindObjectOfType<HeroController>();
-        _entity = FindObjectOfType<HeroEntity>();
 
         _horizontal -= 1;
         _vertical -= 1;
@@ -88,7 +86,6 @@ public class CameraManager : MonoBehaviour
     {
         Debug.Log(ControllerDisabler.Instance);
         ControllerDisabler.Instance.InBlending = _brain.IsBlending;
-        _StopMovementIfBlending();
     }
 
     private void GetArrayOfCamera()
@@ -104,10 +101,5 @@ public class CameraManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void _StopMovementIfBlending()
-    {
-        if (_brain.IsBlending) _entity.StopMovement();
     }
 }

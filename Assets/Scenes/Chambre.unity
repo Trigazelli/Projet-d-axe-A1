@@ -1044,12 +1044,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6480041685457909243, guid: 5c86e74169ec088488685203b29560dc, type: 3}
-      propertyPath: _droneJumpsettings.jumpSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6480041685457909243, guid: 5c86e74169ec088488685203b29560dc, type: 3}
-      propertyPath: _droneJumpsettings.jumpMaxDuration
-      value: 1
+      propertyPath: _groundHorizontalMovementSettings.deceleration
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6771865885331362632, guid: 5c86e74169ec088488685203b29560dc, type: 3}
       propertyPath: m_Name
@@ -1165,45 +1161,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1860076006365304711, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
-      propertyPath: m_DefaultBlend.m_Time
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1860076006365304711, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
-      propertyPath: m_CameraCutEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1860076006365304711, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
-      propertyPath: m_CameraCutEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1860076006365304711, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
-      propertyPath: m_CameraCutEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1860076006365304711, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
-      propertyPath: m_CameraCutEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1860076006365304711, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
-      propertyPath: m_CameraCutEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4901647146181901211, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
-      propertyPath: orthographic size
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5038929044893335352, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
       propertyPath: m_Name
       value: Main Camera (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5548857233573621416, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
-      propertyPath: _vertical
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5548857233573621416, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
-      propertyPath: _horizontal
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5548857233573621416, guid: 10f8199a7aa5e89408bee7162e316e04, type: 3}
       propertyPath: _allVirtualCameras.Array.data[0].virtualCamera.Array.data[0]

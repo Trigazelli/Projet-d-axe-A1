@@ -185,11 +185,6 @@ public class HeroEntity : MonoBehaviour
         _jumpTimer = 0;
     }
 
-    public void StopMovement()
-    {
-        _isStopped = true;
-    }
-
     public bool isJumping => _jumpState != JumpState.Notjumping;
 
     public bool _CheckIfMaxJumpReached()
