@@ -2876,6 +2876,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6480041685457909243, guid: 5c86e74169ec088488685203b29560dc, type: 3}
+      propertyPath: _droneJumpsettings.jumpSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480041685457909243, guid: 5c86e74169ec088488685203b29560dc, type: 3}
+      propertyPath: _droneJumpsettings.jumpMaxDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6771865885331362632, guid: 5c86e74169ec088488685203b29560dc, type: 3}
       propertyPath: m_Name
       value: SquareHero_Entity

@@ -2405,7 +2405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6580692735994017823, guid: 715985515b326124aa11472a1849b2f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.04
+      value: 5.85
       objectReference: {fileID: 0}
     - target: {fileID: 6580692735994017823, guid: 715985515b326124aa11472a1849b2f4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2937,7 +2937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 182482925853841835, guid: 5c86e74169ec088488685203b29560dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.1445606
+      value: -4.09
       objectReference: {fileID: 0}
     - target: {fileID: 182482925853841835, guid: 5c86e74169ec088488685203b29560dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2970,6 +2970,14 @@ PrefabInstance:
     - target: {fileID: 182482925853841835, guid: 5c86e74169ec088488685203b29560dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480041685457909243, guid: 5c86e74169ec088488685203b29560dc, type: 3}
+      propertyPath: _droneJumpsettings.jumpSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480041685457909243, guid: 5c86e74169ec088488685203b29560dc, type: 3}
+      propertyPath: _droneJumpsettings.jumpMaxDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6771865885331362632, guid: 5c86e74169ec088488685203b29560dc, type: 3}
       propertyPath: m_Name
