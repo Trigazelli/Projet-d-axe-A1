@@ -25,6 +25,13 @@ public class CounterOfDestroyable : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+        if (PlayerPrefs.GetInt("Counter") != 1)
+        {
+            PlayerPrefs.SetInt("Counter", 1);
+        } else
+        {
+            Destroy(gameObject);
+        }
         Debug.Log(_numberOfObjects);
         DisplayCounter();
     }

@@ -16,7 +16,7 @@ public class Waving : MonoBehaviour
     }
     void Update()
     {
-        float scale = Mathf.PingPong(Time.time * speed, 1);
+        float scale = Mathf.PingPong(Time.time * speed, 0.1f);
         _transform.localScale = new Vector3 (_scale.x + scale, _scale.y + scale, _scale.z);
     }
 }

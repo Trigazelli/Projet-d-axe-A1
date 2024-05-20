@@ -12,8 +12,13 @@ public class LoadNextScene : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                SceneManager.LoadScene(_sceneName);
+                LoadScene();
             }
         }
+    }
+
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(_sceneName);
     }
 }
